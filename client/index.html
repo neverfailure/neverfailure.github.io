@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/favicon.svg">
+  <title>Never_Failure · 个人刊</title>
+  <script>
+    (function () {
+      var raw = '{{{__platform__}}}';
+      try {
+        var parsed = JSON.parse(raw);
+        if (parsed && typeof parsed === 'object') {
+          window.__platform__ = parsed;
+          return;
+        }
+      } catch (e) {}
+      window.__platform__ = {
+        appId: '',
+        app_name: '',
+        env: 'static',
+        runtimeMode: 'static',
+      };
+    })();
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script>
+    (function () {
+      var OPEN_BRACE = '{';
+      OPEN_BRACE += '{';
+      var TEMPLATE_KEYS = [
+        'appId',
+        'userId',
+        'tenantId',
+        'userName',
+        'csrfToken',
+        'ENVIRONMENT',
+        '__BASENAME__',
+      ];
+      for (var i = 0; i < TEMPLATE_KEYS.length; i++) {
+        var key = TEMPLATE_KEYS[i];
+        var val = window[key];
+        if (typeof val === 'string' && val.indexOf(OPEN_BRACE) === 0) {
+          window[key] = '';
+        }
+      }
+      if (window._appInfo) {
+        var info = window._appInfo;
+        var isPlaceholder = function (v) {
+          return typeof v === 'string' && v.indexOf(OPEN_BRACE) === 0;
+        };
+        if (isPlaceholder(info.name) || isPlaceholder(info.avatar) || isPlaceholder(info.description)) {
+          window._appInfo = { name: '', avatar: '', description: '' };
+        }
+      }
+    })();
+  </script>
+  <script type="module" src="/client/src/index.tsx"></script>
+</body>
+
+</html>

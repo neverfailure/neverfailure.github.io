@@ -1,0 +1,153 @@
+@import '@lark-apaas/client-toolkit/lib/index.css';
+@import "tw-animate-css";
+@import "./tailwind-theme.css";
+@import "./typography.css";
+
+@config "../../tailwind.config.ts";
+
+body {
+  background-color: var(--background);
+  background-image: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--foreground) 5%, transparent) 1px,
+    transparent 1.4px
+  );
+  background-size: 16px 16px;
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+  font-family: var(--font-mono);
+  letter-spacing: 0;
+}
+
+.font-display {
+  font-family: var(--font-song);
+  letter-spacing: -0.012em;
+}
+
+.font-body {
+  font-family: var(--font-song);
+}
+
+.eyebrow {
+  font-family: var(--font-hei);
+  font-size: 10.5px;
+  line-height: 1.4;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.headline {
+  font-family: var(--font-song);
+  font-size: clamp(40px, 7vw, 96px);
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -0.012em;
+  max-width: 18ch;
+}
+
+.strike {
+  text-decoration: line-through;
+  text-decoration-thickness: 3px;
+  text-decoration-color: currentColor;
+}
+
+.accent-word {
+  font-style: italic;
+  font-weight: 700;
+  color: var(--primary);
+  white-space: nowrap;
+}
+
+.deck {
+  font-family: var(--font-song);
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1.45;
+  max-width: 78ch;
+}
+
+.deck b {
+  font-family: var(--font-hei);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.78em;
+  letter-spacing: 0.04em;
+  color: var(--primary);
+  background-color: var(--secondary);
+  border-radius: 2px;
+  padding: 1px 4px;
+}
+
+.rule-accent {
+  width: 80px;
+  height: 3px;
+  background-color: var(--primary);
+  margin: 6px 0 32px;
+}
+
+.quote-bar {
+  background-color: var(--secondary);
+  border-left: 2px solid var(--primary);
+  padding: 10px 12px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.55;
+  max-width: 50ch;
+  color: var(--foreground);
+}
+
+.quote-bar::before {
+  content: '\201C';
+}
+
+.quote-bar::after {
+  content: '\201D';
+}
+
+.portrait-gradient {
+  background-image: linear-gradient(
+    148deg,
+    var(--secondary) 0%,
+    color-mix(in srgb, var(--primary) 55%, var(--secondary)) 58%,
+    var(--primary) 100%
+  );
+}
+
+.lucide {
+  stroke-width: 1.5;
+}
+
+.font-kai {
+  font-family: var(--font-kai);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.rise {
+  animation: rise 0.4s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
