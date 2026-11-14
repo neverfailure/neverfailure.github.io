@@ -71,8 +71,8 @@ export interface GiscusConfig {
 export const GISCUS_CONFIG: GiscusConfig = {
   repo: 'neverfailure/neverfailure.github.io',
   repoId: 'R_kgDOVt1t5w',
-  category: 'Announcements',
-  categoryId: 'DIC_kwDOVt1t584DLFzE',
+  category: 'General',
+  categoryId: 'DIC_kwDOVt1t584DLFzF',
   mapping: 'pathname',
   strict: '0',
   reactionsEnabled: '1',
